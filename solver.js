@@ -43,47 +43,14 @@ class Board {
         for (let i=0; i<this.size; i++){
             for (let j=0; j<this.size; j++){
 
-                this.nodes.set( [i,j], this.board[i][j]);
-
+                this.nodes.set( this.encode([i,j]), this.board[i][j]);
             }
         }
-        this.fillGraph();
+        this.graph = graph3;
         console.log(this.graph);
     }
 
-    fillGraph(){
-        for (let i=0; i<this.size; i++){
-            for (let j=0; j<this.size; j++){
-
-                let neighbours=[];
-
-                if (i>0) {
-                    neighbours.push( [i-1,j] );  // North
-                    if (j>0){
-                        neighbours.push( [i-1, j-1] )  // North-west
-                    }
-                    if (j<this.size-1){
-                        neighbours.push( [i-1, j+1] )  // North-east
-                    }
-                }
-                if (j>0){
-                    neighbours.push( [i, j-1] ); // West
-                }
-                if (i<this.size-1){
-                    neighbours.push( [i+1, j] ); // East
-                    if (j>0){
-                        neighbours.push( [i+1, j-1] ); // South-west
-                    }
-                    if (j<this.size-1){
-                        neighbours.push( [i+1, j+1] ); // South-east
-                    }
-                }
-                if (j<this.size-1){
-                    neighbours.push( [i, j+1] ); // South
-                }
-
-                this.graph.set( [i,j], neighbours);
-            }
-        }
+    encode(address){
+        return this.size*address[0] + address[1] + 1
     }
 }
