@@ -63,6 +63,16 @@ class Board {
 
                 this.nodes.set( [i,j], this.board[i][j]);
 
+            }
+        }
+        this.fillGraph();
+        console.log(this.graph);
+    }
+
+    fillGraph(){
+        for (let i=0; i<this.size; i++){
+            for (let j=0; j<this.size; j++){
+
                 let neighbours=[];
 
                 if (i>0) {
@@ -93,6 +103,5 @@ class Board {
                 this.graph.set( [i,j], neighbours);
             }
         }
-        console.log(this.graph);
     }
 }
