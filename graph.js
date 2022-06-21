@@ -1,6 +1,6 @@
 let graph3 = new Map();
 
-graph3.set(1, [2,3,4]);
+graph3.set(1, [2,4,5]);
 graph3.set(2, [1,3,4,5,6]);
 graph3.set(3, [2,5,6]);
 graph3.set(4, [1,2,5,7,8]);

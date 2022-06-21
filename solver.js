@@ -39,6 +39,7 @@ class Board {
         this.size = arr.length;
         this.nodes = new Map();
         this.graph = new Map();
+        this.answers = [];
 
         for (let i=0; i<this.size; i++){
             for (let j=0; j<this.size; j++){
@@ -48,6 +49,33 @@ class Board {
         }
         this.graph = graph3;
         console.log(this.graph);
+    }
+
+    dfs( address, wordSoFar, pathSoFar, trie){
+
+        // Check whether this letter makes a valid prefix
+        let newTrie = trie.children.get(this.nodes.get(address));
+        if (newTrie == null){
+            return;
+        }
+        // Check whether this letter is EOW
+        let updatedWord = wordSoFar + this.nodes.get(address);
+        if (newTrie.eow){
+            this.answers.push(updatedWord);
+        }
+
+        pathSoFar.add(address);
+
+        for (let nb of this.graph.get(address)){
+            // For each neighbouring letter...
+            
+            if ( !(pathSoFar.has(nb)) ){  
+                // If the nb is not in the path
+    
+                this.dfs( nb, updatedWord, pathSoFar, newTrie );
+            }
+        }
+        pathSoFar.delete(address);
     }
 
     encode(address){
