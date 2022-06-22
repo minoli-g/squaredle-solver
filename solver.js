@@ -47,8 +47,15 @@ class Board {
                 this.nodes.set( this.encode([i,j]), this.board[i][j]);
             }
         }
-        this.graph = graph3;
-        console.log(this.graph);
+        if (this.size == 3){
+            this.graph = graph3;
+        }
+        if (this.size == 4){
+            this.graph = graph4;
+        }
+        if (this.size == 5){
+            this.graph = graph5;
+        }
     }
 
     dfs( address, wordSoFar, pathSoFar, trie){
