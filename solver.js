@@ -29,7 +29,10 @@ class TrieNode {
             }
             curr = curr.children.get(letter);
         }
-        return true;
+        if (curr.eow){
+            return true;
+        }
+        return false;
     }
 }
 
