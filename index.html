@@ -8,5 +8,14 @@
     <script src="words2.js"></script>
 </head>
 <body>
-    <h1> Placement text </h1>
+    <h1> Squaredle Solver </h1>
+    <p> Enter the rows of the board, separated by a hyphen. Eg: abc-def-ghi</p>
+    <p> Missing or faded squares can be represented by an @ symbol. Eg: ab@-def-g@i</p>
+
+    <form>
+        <input type="text" id="boardStr"/>
+        <button type="submit" id="submitBtn" onclick="onSubmit(); return false;">Go</button>
+    </form>
+
+    <p id="solutionList"></p>
 </body>

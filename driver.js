@@ -1,16 +1,28 @@
+var dictionary = new TrieNode();
+
 window.onload = function() {
     console.log("Onload fn check")
 
-    let dictionary = new TrieNode();
-    for (let word of wordList){
+    for (let word of wordList2){
         dictionary.addWord(word);
     }
-    console.log(dictionary)
-    
-    let aa = new Board("axy-fge-ids");
-    
-    for (let i=1; i<10; i++){
-        aa.dfs(i, "", new Set(), dictionary)
-    }
-    console.log(aa.answers);
  }
+
+
+ var button = document.getElementById("submitBtn");
+     
+ function onSubmit() {
+    try {
+        var str = document.getElementById("boardStr")
+        
+        let aa = new Board(str.value);
+        for (let i=1; i< (aa.size**2) +1; i++){
+            aa.dfs(i, "", new Set(), dictionary)
+        }
+        console.log(aa.answers);
+        document.getElementById("solutionList").innerHTML = aa.answers;
+    }
+    catch(err){
+        console.log(err.message)
+    }
+}
