@@ -24,6 +24,17 @@ class TrieNode {
             }
         }
     }
+
+    check(word){
+        let curr = this;
+        for (let letter of word){
+            if (curr.children.get(letter) == null){
+                return false;
+            }
+            curr = curr.children.get(letter);
+        }
+        return true;
+    }
 }
 
 class Board {
