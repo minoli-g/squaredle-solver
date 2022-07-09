@@ -13,9 +13,9 @@ window.onload = function() {
      
  function onSubmit() {
     try {
-        var str = document.getElementById("boardStr")
+        var str = document.getElementById("boardStr").value.toString().toLowerCase();
         
-        let aa = new Board(str.value);
+        let aa = new Board(str);
         for (let i=1; i< (aa.size**2) +1; i++){
             aa.dfs(i, "", new Set(), dictionary)
         }
