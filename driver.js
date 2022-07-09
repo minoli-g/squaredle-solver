@@ -20,7 +20,7 @@ window.onload = function() {
             aa.dfs(i, "", new Set(), dictionary)
         }
         console.log(aa.answers);
-        document.getElementById("solutionList").innerHTML = aa.answers;
+        document.getElementById("solutionList").innerHTML = Array.from(aa.answers);
     }
     catch(err){
         console.log(err.message)

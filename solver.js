@@ -49,7 +49,7 @@ class Board {
         this.size = arr.length;
         this.nodes = new Map();
         this.graph = new Map();
-        this.answers = [];
+        this.answers = new Set();
 
         for (let i=0; i<this.size; i++){
             for (let j=0; j<this.size; j++){
@@ -78,7 +78,7 @@ class Board {
         // Check whether this letter is EOW
         let updatedWord = wordSoFar + this.nodes.get(address);
         if (newTrie.eow){
-            this.answers.push(updatedWord);
+            this.answers.add(updatedWord);
         }
 
         pathSoFar.add(address);
