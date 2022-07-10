@@ -3,7 +3,7 @@ var dictionary = new TrieNode();
 window.onload = function() {
     console.log("Onload fn check")
 
-    for (let word of wordList2){
+    for (let word of wordList3){
         dictionary.addWord(word);
     }
  }
