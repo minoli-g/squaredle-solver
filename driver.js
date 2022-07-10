@@ -19,9 +19,12 @@ window.onload = function() {
         for (let i=1; i< (aa.size**2) +1; i++){
             aa.dfs(i, "", new Set(), dictionary)
         }
-        
-        document.getElementById("solnOverview").innerHTML = aa.answers.size + " words";
-        document.getElementById("solutionList").innerHTML = Array.from(aa.answers);
+
+        let ansArray = Array.from(aa.answers);
+        ansArray.sort( (a,b) => a.length - b.length );
+
+        document.getElementById("solnOverview").innerHTML = ansArray.length + " words";
+        document.getElementById("solutionList").innerHTML = ansArray;
     }
     catch(err){
         console.log(err.message)
