@@ -28,5 +28,7 @@ window.onload = function() {
     }
     catch(err){
         console.log(err.message)
+        document.getElementById("solnOverview").innerHTML = err.message;
+        document.getElementById("solutionList").innerHTML = "";
     }
 }

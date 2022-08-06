@@ -39,8 +39,10 @@ class TrieNode {
 class Board {
 
     constructor(boardStr){
+
+        this.validate( boardStr );
+
         let arr = boardStr.split("-");
-        
         this.board = [];
         for (let item of arr){
             this.board.push(item.split(""));
@@ -53,18 +55,37 @@ class Board {
 
         for (let i=0; i<this.size; i++){
             for (let j=0; j<this.size; j++){
-
                 this.nodes.set( this.encode([i,j]), this.board[i][j]);
             }
         }
-        if (this.size == 3){
+
+        // Assign the graph of neighbours
+        if (this.size==3){
             this.graph = graph3;
         }
-        if (this.size == 4){
+        if (this.size==4){
             this.graph = graph4;
         }
-        if (this.size == 5){
+        if (this.size==5){
             this.graph = graph5;
+        }
+    }
+
+    validate( boardStr ){
+
+        // Split the string into individual rows
+        let arr = boardStr.split("-");
+
+        // Check whether each row has the same length
+        for (let item of arr){
+            if (item.length !== arr.length){
+                throw new Error("Board does not represent a square. Please re-check your input");
+            }
+        }
+
+        // Check whether the size is valid
+        if (arr.length < 3 || arr.length > 5){
+            throw new Error("Invalid board size. Valid sizes are 3, 4 and 5.");
         }
     }
 
