@@ -8,15 +8,22 @@
     <script src="words3.js"></script>
 </head>
 <body>
-    <h1> Squaredle Solver </h1>
-    <p> Enter the rows of the board, separated by a hyphen. Eg: abc-def-ghi</p>
-    <p> Missing or faded squares can be represented by an @ symbol. Eg: ab@-def-g@i</p>
+    <div style="width:380px; height:420px; margin:auto;">
 
-    <form>
-        <input type="text" id="boardStr"/>
-        <button type="submit" id="submitBtn" onclick="onSubmit(); return false;">Go</button>
-    </form>
+        <h1 style="font-family:fantasy;"> Squaredle Solver </h1>
 
-    <p id="solnOverview"></p>
-    <p id="solutionList" style="word-wrap: break-word;"></p>
+        <div style="font-family: sans-serif;">
+            <p> Enter the rows of the board, separated by a hyphen. Eg: abc-def-ghi</p>
+            <p> Missing or faded squares can be represented by an @ symbol. Eg: ab@-def-g@i</p>
+        </div>
+
+        <form style="margin: 15px;">
+            <input type="text" id="boardStr" size="30"/>
+            <br><br>
+            <button type="submit" id="submitBtn" style="background-color:mediumseagreen;" onclick="onSubmit(); return false;">Solve!</button>
+        </form>
+
+        <p id="solnOverview"></p>
+        <p id="solutionList" style="word-wrap: break-word;"></p>
+    </div>
 </body>
