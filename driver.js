@@ -16,9 +16,17 @@ window.onload = function() {
         var str = document.getElementById("boardStr").value.toString().toLowerCase();
         
         let aa = new Board(str);
-        for (let i=1; i< (aa.size**2) +1; i++){
-            aa.dfs(i, "", new Set(), dictionary)
+
+        for (let i=0; i<aa.size; i++){
+
+            for (let j=0; j<aa.size; j++){
+                aa.dfs( [i,j], "", new Set(), dictionary);
+            }
         }
+
+        // for (let i=1; i< (aa.size**2) +1; i++){
+        //     aa.dfs(i, "", new Set(), dictionary)
+        // }
 
         let ansArray = Array.from(aa.answers);
         ansArray.sort( (a,b) => a.length - b.length );
