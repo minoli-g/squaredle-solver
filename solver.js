@@ -49,26 +49,8 @@ class Board {
         }
 
         this.size = arr.length;
-        this.nodes = new Map();
-        this.graph = new Map();
         this.answers = new Set();
-
-        for (let i=0; i<this.size; i++){
-            for (let j=0; j<this.size; j++){
-                this.nodes.set( this.encode([i,j]), this.board[i][j]);
-            }
-        }
-
-        // Assign the graph of neighbours
-        if (this.size==3){
-            this.graph = graph3;
-        }
-        if (this.size==4){
-            this.graph = graph4;
-        }
-        if (this.size==5){
-            this.graph = graph5;
-        }
+        console.log(this);
     }
 
     validate( boardStr ){
@@ -84,39 +66,55 @@ class Board {
         }
 
         // Check whether the size is valid
-        if (arr.length < 3 || arr.length > 5){
-            throw new Error("Invalid board size. Valid sizes are 3, 4 and 5.");
+        if (arr.length < 3 ){
+            throw new Error("Minimum board size is 3");
         }
     }
 
     dfs( address, wordSoFar, pathSoFar, trie){
 
         // Check whether this letter makes a valid prefix
-        let newTrie = trie.children.get(this.nodes.get(address));
+        let newTrie = trie.children.get(this.board[address[0]][address[1]]);
         if (newTrie == null){
             return;
         }
         // Check whether this letter is EOW
-        let updatedWord = wordSoFar + this.nodes.get(address);
+        let updatedWord = wordSoFar + this.board[address[0]][address[1]];
         if (newTrie.eow){
             this.answers.add(updatedWord);
         }
 
-        pathSoFar.add(address);
+        pathSoFar.add(this.encode(address));
 
-        for (let nb of this.graph.get(address)){
+        for (let nb of this.getNBs(address)){
             // For each neighbouring letter...
             
-            if ( !(pathSoFar.has(nb)) ){  
+            if ( !(pathSoFar.has(this.encode(nb))) ){  
                 // If the nb is not in the path
+                console.log(pathSoFar, nb)
     
                 this.dfs( nb, updatedWord, pathSoFar, newTrie );
             }
         }
-        pathSoFar.delete(address);
+        pathSoFar.delete(this.encode(address));
     }
 
     encode(address){
-        return this.size*address[0] + address[1] + 1
+        return this.size*address[0] + address[1] + 1;
+    }
+
+    getNBs(address){
+        let dirs = [[-1,-1], [-1,0], [-1,1], [0,-1], [0,1], [1,-1], [1,0], [1,1]];
+        let arr = [];
+
+        for (let dir of dirs){
+            let x = address[0] + dir[0];
+            let y = address[1] + dir[1];
+
+            if (x>=0 && x<this.size && y>=0 && y<this.size){
+                arr.push([x,y]);
+            }
+        }
+        return arr;
     }
 }
