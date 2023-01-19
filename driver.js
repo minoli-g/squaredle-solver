@@ -10,6 +10,26 @@ window.onload = function() {
 
 
  var button = document.getElementById("submitBtn");
+
+function prettySortAnswers(ansArray){
+
+    ansArray.sort();
+    ansArray.sort( (a,b) => a.length - b.length );
+
+    let n = ansArray.length;
+    let pretty = n + " words found.";
+    let prevWord = "";
+
+    for(let word of ansArray){
+        if (word.length > prevWord.length){
+            pretty += "<br><br>" + word.length + " letter words: <br><br>";
+        }
+        pretty += "\t" + word;
+        prevWord = word;
+    }
+    return(pretty);
+}
+
      
  function onSubmit() {
     try {
@@ -25,14 +45,11 @@ window.onload = function() {
         }
 
         let ansArray = Array.from(aa.answers);
-        ansArray.sort( (a,b) => a.length - b.length );
-
-        document.getElementById("solnOverview").innerHTML = ansArray.length + " words";
-        document.getElementById("solutionList").innerHTML = ansArray;
+        pretty = prettySortAnswers(ansArray);
+        document.getElementById("solutionList").innerHTML = pretty ;
     }
     catch(err){
         console.log(err.message)
-        document.getElementById("solnOverview").innerHTML = err.message;
-        document.getElementById("solutionList").innerHTML = "";
+        document.getElementById("solutionList").innerHTML = err.message;
     }
 }
