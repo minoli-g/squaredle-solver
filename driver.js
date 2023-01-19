@@ -24,10 +24,6 @@ window.onload = function() {
             }
         }
 
-        // for (let i=1; i< (aa.size**2) +1; i++){
-        //     aa.dfs(i, "", new Set(), dictionary)
-        // }
-
         let ansArray = Array.from(aa.answers);
         ansArray.sort( (a,b) => a.length - b.length );
 
