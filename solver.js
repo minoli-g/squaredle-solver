@@ -50,7 +50,6 @@ class Board {
 
         this.size = arr.length;
         this.answers = new Set();
-        console.log(this);
     }
 
     validate( boardStr ){
