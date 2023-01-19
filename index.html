@@ -18,18 +18,18 @@
         </nav>
 
         <br>
-        <div style="font-family: sans-serif;">
+        <div style="font-family: sans-serif;" class="px-3">
             <p> Enter the rows of the board, separated by a hyphen. Eg: abc-def-ghi</p>
             <p> Missing or faded squares can be represented by an @ symbol. Eg: ab@-def-g@i</p>
         </div>
 
-        <form >
+        <form  class="px-3">
             <input type="text" class="form-control form-control-lg" id="boardStr" size="30"/>
             <br>
             <button type="submit" class="btn btn-outline-dark" id="submitBtn" onclick="onSubmit(); return false;">Solve!</button>
         </form>
         <br>
-        <p id="solutionList" style="word-wrap: break-word;"></p>
+        <p id="solutionList" style="word-wrap: break-word;" class="px-3"></p>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
