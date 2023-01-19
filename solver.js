@@ -89,9 +89,7 @@ class Board {
             // For each neighbouring letter...
             
             if ( !(pathSoFar.has(this.encode(nb))) ){  
-                // If the nb is not in the path
-                console.log(pathSoFar, nb)
-    
+                // If the nb is not in the path    
                 this.dfs( nb, updatedWord, pathSoFar, newTrie );
             }
         }
