@@ -1,26 +1,69 @@
 <!DOCTYPE html>
+
 <head>
     <title> Squaredle Solver </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="solver.js"></script>
     <script src="driver.js"></script>
     <script src="words3.js"></script>
 </head>
+
 <body>
     <div style="width:380px; height:420px; margin:auto;">
 
-        <h1 style="font-family:fantasy;"> Squaredle Solver </h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <h2 class="mr-sm-2"> Squaredle Solver </h2>
+            <button class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal"><h3>?</h3></button>
+        </nav>
 
+        <br>
         <div style="font-family: sans-serif;">
             <p> Enter the rows of the board, separated by a hyphen. Eg: abc-def-ghi</p>
             <p> Missing or faded squares can be represented by an @ symbol. Eg: ab@-def-g@i</p>
         </div>
 
-        <form style="margin: 15px;">
-            <input type="text" id="boardStr" size="30"/>
-            <br><br>
-            <button type="submit" id="submitBtn" style="background-color:mediumseagreen;" onclick="onSubmit(); return false;">Solve!</button>
+        <form >
+            <input type="text" class="form-control form-control-lg" id="boardStr" size="30"/>
+            <br>
+            <button type="submit" class="btn btn-outline-dark" id="submitBtn" onclick="onSubmit(); return false;">Solve!</button>
         </form>
+        <br>
         <p id="solutionList" style="word-wrap: break-word;"></p>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">About Squaredle Solver</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        This is a solver for the popular word-finding game <a href="https://squaredle.app/">Squaredle</a>.
+                        <br>
+                        Please note that the results generated may not be an exact match with Squaredle's word list,
+                        but should cover almost all the required words.
+                        <hr>
+                        <b> IMPORTANT: </b> Use of this solver to artificially gain
+                        a perfect score in a short time and catapult to the top of the leaderboard is strongly discouraged,
+                        and can lead to your account being blocked from Squaredle's leaderboard.
+                        <hr>
+                        Got feedback, or see something you'd like to change? 
+                        Check out the <a href="https://github.com/minoli-g/squaredle-solver">GitHub repository</a>, and 
+                        feel free to submit an issue or put in a pull request.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
