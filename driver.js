@@ -17,14 +17,14 @@ function prettySortAnswers(ansArray){
     ansArray.sort( (a,b) => a.length - b.length );
 
     let n = ansArray.length;
-    let pretty = n + " words found.";
+    let pretty = "<b> Words found: </b>"+ n;
     let prevWord = "";
 
     for(let word of ansArray){
         if (word.length > prevWord.length){
-            pretty += "<br><br>" + word.length + " letter words: <br><br>";
+            pretty += "<br><br><b>" + word.length + " letter words: </b><br>";
         }
-        pretty += "\t" + word;
+        pretty += "&emsp;" + word;
         prevWord = word;
     }
     return(pretty);

@@ -14,19 +14,26 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <h2 class="mr-sm-2"> Squaredle Solver </h2>
-            <button class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal"><h3>?</h3></button>
+            <button class="btn btn-outline-dark my-2 py-0 my-sm-0" data-toggle="modal" data-target="#exampleModal">
+                <h3>?</h3>
+            </button>
         </nav>
 
         <br>
-        <div style="font-family: sans-serif;" class="px-3">
-            <p> Enter the rows of the board, separated by a hyphen. Eg: abc-def-ghi</p>
-            <p> Missing or faded squares can be represented by an @ symbol. Eg: ab@-def-g@i</p>
+        <div class="px-3">
+            <p> Enter the puzzle board into the form below,
+                each row separated by a hyphen (ex: abc-def-ghi)
+            </p>
+            <p> If there are any missing or faded squares,
+                 add an @ symbol in their place (ex: ab@-def-g@i)</p>
         </div>
 
         <form  class="px-3">
             <input type="text" class="form-control form-control-lg" id="boardStr" size="30"/>
             <br>
-            <button type="submit" class="btn btn-outline-dark" id="submitBtn" onclick="onSubmit(); return false;">Solve!</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-outline-dark mx-auto" id="submitBtn" onclick="onSubmit(); return false;">Solve!</button>
+            </div>
         </form>
         <br>
         <p id="solutionList" style="word-wrap: break-word;" class="px-3"></p>
